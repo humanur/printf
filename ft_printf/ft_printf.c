@@ -6,7 +6,7 @@
 /*   By: amsagman <amsagman@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 14:40:11 by amsagman          #+#    #+#             */
-/*   Updated: 2024/11/13 14:40:12 by amsagman         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:04:27 by amsagman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_format(va_list args, char c)
 	else if (c == 'x' || c == 'X')
 		return (ft_hex(va_arg(args, unsigned int), c));
 	else if (c == 'p')
-		return (ft_point(va_arg(args, unsigned long), 1));
+		return (ft_point(va_arg(args, unsigned long)));
 	else
 		return (0);
 }

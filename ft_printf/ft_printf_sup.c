@@ -6,7 +6,7 @@
 /*   By: amsagman <amsagman@student.42kocaeli.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 14:37:02 by amsagman          #+#    #+#             */
-/*   Updated: 2024/11/21 14:38:35 by amsagman         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:23:43 by amsagman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_putchar(char c)
 	return (write(1, &c, 1));
 }
 
-int	ft_nbr(int c)
+int	ft_nbr(long c)
 {
 	int	len;
 	int	tmp;
@@ -51,7 +51,7 @@ int	ft_string(char *str)
 	i = 0;
 	if (str == NULL)
 	{
-		if (write(1, "nil", 3) == -1)
+		if (write(1, "(null)", 6) == -1)
 			return (-1);
 		return (6);
 	}
@@ -64,7 +64,7 @@ int	ft_string(char *str)
 	return (i);
 }
 
-int	ft_hex(unsigned int d, char b)
+int	ft_hex(unsigned long d, char b)
 {
 	int	len;
 	int	tmp;
@@ -90,15 +90,22 @@ int	ft_hex(unsigned int d, char b)
 	return (len + 1);
 }
 
-int	ft_point(unsigned long b, int i)
+int	ft_point(unsigned long b)
 {
-	if (b == 0)
+	int len;
+	int tmp;
+
+	len = 0;
+	if (!b)
 	{
-		if (ft_string("(nil)") == -1)
+		if (write(1, "(nil)", 5) == -1)
 			return (-1);
 		return (5);
 	}
-	if (ft_string("0x") == -1)
+	if (write(1, "0x", 2) == -1)
 		return (-1);
-	return (ft_hex(b, i));
+	len += 2;
+	tmp = ft_hex(b, 'x');
+	len += tmp;
+	return (len + 1);
 }
